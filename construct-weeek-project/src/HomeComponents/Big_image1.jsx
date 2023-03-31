@@ -18,11 +18,11 @@ const Big_image1 = () => {
                     <HStack padding={0}>
                         <Text mt={5} fontWeight={'semibold'} fontSize= '19px' color="rgb(110, 50, 144)">FIND THE PERFECT GIFT</Text>
                         <VStack  w={'20%'}  >
-                        <FormLabel color="rgb(110, 50, 144)" lineHeight={"1px"}>Where is it going?</FormLabel>
+                        <FormLabel fontSize={'14px'} color="rgb(110, 50, 144)" lineHeight={"1px"}>Where is it going?</FormLabel>
                         <Input _hover={'none'} placeholder="Delivery zip code"  h={'30px'} borderRadius={2} focusBorderColor='black'  border="1px solid black" w={'95%'} ></Input>
                         </VStack>
                         <VStack   w={'20%'}>
-                        <FormLabel color="rgb(110, 50, 144)" lineHeight={"1px"}>Occasion</FormLabel>
+                        <FormLabel fontSize={'14px'} color="rgb(110, 50, 144)" lineHeight={"1px"}>Occasion</FormLabel>
                         <Input _hover={'none'} placeholder="Birthday"  focusBorderColor='black' h={'30px'} borderRadius={2}   border="1px solid black" w={'95%'}></Input>
                         </VStack>
                         <Center><Button color={'white'} fontWeight={'600'} mt={4} _hover={'none'} bg={'#65388b'} height={"32px"} >FIND A GIFT NOW</Button></Center>

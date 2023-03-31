@@ -6,7 +6,8 @@ import LoginLadingPage from './LoginComponents/LoginLadingPage';
 import Signin from './LoginComponents/Signin';
 import LoginPage from './LoginComponents/LoginPage';
 import PrivateRoutes from './LoginComponents/PrivateRoutes';
-import ProductHomepage from './Pages/ProductHomepage';
+import ProductHomepage from './Pages/Productpage';
+import SingleProductspage from './Pages/SingleProductspage';
 function App() {
   return (
    <Box>
@@ -16,6 +17,7 @@ function App() {
     <Route path='/signin' element={<Signin/>}></Route>
     <Route path='/login' element={<LoginPage/>}></Route>
     <Route path='/productpage' element={<ProductHomepage/>}></Route>
+    <Route path='/single/:id' element={<SingleProductspage/>}></Route>
   </Routes>
    </Box>
   );

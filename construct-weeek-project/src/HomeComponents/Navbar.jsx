@@ -7,6 +7,7 @@ import Details from '../LoginComponents/LoginLadingPage'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { Auth } from '../LoginComponents/Authcontext'
+import Allproduct from '../ProductComponents/Allproduct'
 
 
 const Navbar = () => {
@@ -24,6 +25,8 @@ const Navbar = () => {
     useEffect(() => {
         fetchandupdatedata()
     }, [])
+
+    
     return (
         <Box>
             <hr></hr>
@@ -41,8 +44,8 @@ const Navbar = () => {
             <Flex w={'89%'} mb={2} >
              <Image src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/bltce6d6c480577e10e/5d4866eff9ece57fa9a82245/flowers.png?quality=60&auto=webp&optimize={medium}" w="10%"></Image>
              <Spacer/>
-             <Input placeholder='What are you looking for?' border="1px solid silver" variant='unstyled' ml={20} pl={4}   size='md' mt={3} borderLeftRadius={2} borderRightRadius={'none'} w={'45%'} h={'40px'} />
-             <Button _hover={'none'} backgroundColor='#65388b' color="white"  width={'7.5%'} borderLeftRadius={'none'} mt={3}>SEARCH</Button>
+             <Input  placeholder='What are you looking for?' border="1px solid silver" variant='unstyled' ml={20} pl={4}   size='md' mt={3} borderLeftRadius={2} borderRightRadius={'none'} w={'45%'} h={'40px'} />
+             <Button cursor={'pointer'} _hover={'none'} backgroundColor='#65388b' color="white"  width={'7.5%'} borderLeftRadius={'none'} mt={3}>SEARCH</Button>
             <Spacer/>
                 <Flex w={'18%'} >
                 <Box>
