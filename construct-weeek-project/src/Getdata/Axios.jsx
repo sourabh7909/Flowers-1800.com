@@ -25,3 +25,24 @@ export const Explore=()=>{
  export const Greatthings=()=>{
     return axios.get("http://localhost:8080/Greatthings")
  }
+ export const Productslist=({sortby,orderby,filterval})=>{
+   const url="http://localhost:8080/Productslist"
+   if(filterval==""){
+     return axios.get(url,{
+      params:{
+         _sort:sortby,
+         _order:orderby
+      }
+     })
+   }
+   return axios.get(url,{
+      params:{
+         _sort:sortby,
+         _order:orderby,
+         isName:filterval
+      }
+   })
+ }
+ export const Singleproduct=({id})=>{
+   return axios.get(`http://localhost:8080/Productslist/${id}`)
+ }
