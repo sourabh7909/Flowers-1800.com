@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+
 import React, { useState } from 'react'
 import { createContext } from 'react'
 export const Auth=createContext()
@@ -7,6 +7,7 @@ const [token,settoken]=useState("")
 const [isAuth,setisAuth]=useState(false)
 const [totalcartlength,settotalcartlength]=useState(0)
 const [totalAmount,setallAmount]=useState(0)
+
 const totalcartdata=(totalcartlength)=>{
 settotalcartlength(totalcartlength)
 }
