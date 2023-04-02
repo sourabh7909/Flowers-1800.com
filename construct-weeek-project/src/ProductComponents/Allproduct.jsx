@@ -75,7 +75,7 @@ const Allproduct = ({ searchval }) => {
                 <Image src={el.image} />
                 <Image src={el.image2} mt={2} w={'150px'} h={'17px'} />
                 <Text fontWeight={'medium'} color={'#000000'}>{el.name}{el.isName}</Text>
-                <Text fontFamily={'LatoMedium,sans-serif'} fontSize={'18px'} fontWeight={'bold'} color={'#000000'}>{el.price} - {el.price2}</Text>
+                <Text fontFamily={'LatoMedium,sans-serif'} fontSize={'18px'} fontWeight={'bold'} color={'#000000'}>${el.price} - ${el.price2}</Text>
               </Box></Link>
             )}
           </Grid>

@@ -23,14 +23,14 @@ const Trendings = () => {
             <Center>
                 <Grid w={'86.5%'} templateColumns={"repeat(8,1fr)"} gap={5}>
                     {navtop.map((el) =>
-                        <Box>
-                            <Box overflow={'hidden'} key={el.id}>
+                        <Box key={el.id}>
+                            <Box overflow={'hidden'} >
                                 <Image overflow={'hidden'}  cursor={'pointer'} src={el.image} w={'100%'} alt={el.id} ></Image>
                                 {/* <Center> <Text mt={1} textAlign={'center'} fontWeight={'semibold'} fontSize={'1.1em'} color={'rgb(31, 31, 27)'}>{el.name}</Text></Center> */}
 
                             </Box>
 
-                            <Center> <Text w={'100%'} mt={1} fontFamily={'LatoMedium, sans-serif'} textAlign={'center'}  fontSize={'13px'} font-weight= '400' letterSpacing={'0.5px'} color={'rgb(31, 31, 27)'}>{el.name}</Text></Center>
+                            <Center> <Text w={'100%'} mt={1} fontFamily={'LatoMedium, sans-serif'} textAlign={'center'}  fontSize={'13px'}  letterSpacing={'0.5px'} color={'rgb(31, 31, 27)'}>{el.name}</Text></Center>
                             <Center> <Text color={el.color} w={'160%'} mt={1} fontFamily={'LatoMedium, sans-serif'} textAlign={'center'}  fontSize={'13px'} fontWeight= '600' letterSpacing={'0.5px'}>{el.price}</Text></Center>
                         </Box>
                     )}

@@ -46,3 +46,9 @@ export const Explore=()=>{
  export const Singleproduct=({id})=>{
    return axios.get(`http://localhost:8080/Productslist/${id}`)
  }
+ export const cartData=()=>{
+   return axios.get("http://localhost:8080/cartData")
+}
+export const Deletedata=({id})=>{
+  return axios.delete(`http://localhost:8080/cartData/${id}`)
+}
