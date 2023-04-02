@@ -3,11 +3,10 @@ import { Deletedata, cartData } from '../Getdata/Axios'
 import { useState, useEffect } from 'react'
 import { Box, Center, Flex, Text, Image, Select, HStack, Button, Spacer, FormLabel } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
-import Navbar from '../HomeComponents/Navbar'
 import { useContext } from 'react'
 import { Auth } from '../LoginComponents/Authcontext'
 import { useNavigate } from 'react-router-dom'
-import PaymentHome from '../Paymentpagecomponents/PaymentHome'
+
 // // The default icon size is 1em (16px)
 // <PhoneIcon />
 
@@ -18,13 +17,13 @@ import PaymentHome from '../Paymentpagecomponents/PaymentHome'
 // <WarningIcon w={8} h={8} color="red.500" />
 const CartHome = () => {
     const navigate=useNavigate()
-    const {totalcartdata}=useContext(Auth)
+    const {totalcartdata,setallAmount}=useContext(Auth)
     const [navtop, setnavtop] = useState([])
     const [totalitems,settotalitem]=useState(0)
     const [pricewithquantity,setpricewithquantity]=useState(0)
     
 
-    const fetchandupdatedata = async (totalitem) => {
+    const fetchandupdatedata = async () => {
         try {
             await cartData()
                 .then((res) =>{ 
@@ -42,12 +41,17 @@ const CartHome = () => {
 
     const Qun = new Array(99).fill(0).map((e, i) => (i + 1))
     var totalprice=0
-
+console.log("totalprice",totalprice)
 const handleClick=(id)=>{
   Deletedata({id})
   .then((res)=>fetchandupdatedata())
 }
-
+const handlenavigate=(totalprice)=>{
+    console.log("yeee",totalprice)
+    setallAmount(totalprice)
+    return navigate(`/payment`)
+   
+}
     return (
 
         <Box>
@@ -97,7 +101,7 @@ const handleClick=(id)=>{
   
                 <Box mt={"-55px"} width={'50%'}>
                     <Box  borderRadius={'9px'} position={'fixed'}  ml={5}>
-                        <Button _hover={'none'} mb={'20px'} h={'35px'} borderRadius={'3px'} fontWeight={'bold'} w={'60%'} color={'white'} backgroundColor={'#00C876'} onClick={()=>navigate('/payment')}>PROCEED TO CHECKOUT</Button>
+                        <Button _hover={'none'} mb={'20px'} h={'35px'} borderRadius={'3px'} fontWeight={'bold'} w={'60%'} color={'white'} backgroundColor={'#00C876'} onClick={()=>handlenavigate(totalprice)}>PROCEED TO CHECKOUT</Button>
                         <Box backgroundColor={'white'} p={'15px'} borderRadius={'9px'} h={'230px'} w={'60%'} boxShadow={' rgba(0, 0, 0, 0.35) 0px 5px 15px;'} >
                             <Text mb={2} color={'#000'} fontWeight={'bold'} fontSize={'1em'} fontFamily={'Helvetica, Arial, Verdana, sans-serif !important'}>Order Summary</Text>
                             <Text mb={2} fontFamily={'Helvetica, Arial, Verdana, sans-serif !important'}>{totalitems} Items</Text>
@@ -105,7 +109,7 @@ const handleClick=(id)=>{
                             <Flex mb={2} mt={2} color={'#000'} fontWeight={'bold'} fontSize={'1em'} fontFamily={'Helvetica, Arial, Verdana, sans-serif !important'}>
                                 <Text >Order Total</Text>
                                 <Spacer />
-                                <Text>{pricewithquantity===0?totalprice:pricewithquantity+totalprice}
+                                <Text>${pricewithquantity===0?totalprice:pricewithquantity+totalprice}
                                 </Text>
                             </Flex>
                             <Image mb={4} src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/bltc723326dc66beda5/image-20220307-142252.png" w={'40%'}></Image>

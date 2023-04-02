@@ -1,4 +1,4 @@
-import { Box,Button,Center,VStack,Text, ListItem, UnorderedList } from '@chakra-ui/react'
+import { Box,Button,Center,Text, ListItem, UnorderedList } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ const LoginLadingPage = () => {
     
     <Box >
     <Center>
-      <Box pt={'20px'} borderRadius={'3px'} mt={'10vh'}  h={'55vh'} width={'30%'} boxShadow={' rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;'}>
+      <Box pt={'20px'} borderRadius={'3px'} mt={'10vh'}  h={'400px'} width={'30%'} boxShadow={' rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;'}>
        
           <Center> <Button cursor={'pointer'} onClick={()=>navigate('/login')}  _hover={'none'} fontWeight={'bold'} borderRadius={'3px'} m={'10px'} w={'70%'} backgroundColor={'#65388b'} color={'#fff !important'}>SIGN IN</Button></Center>
           <Center> <Text color={'black'} fontWeight="bold">Don't have an account?</Text></Center>

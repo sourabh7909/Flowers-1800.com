@@ -1,26 +1,35 @@
-import { Box, Center, Image, Spacer, Text, Flex,  HStack, FormControl, FormLabel, Input, Button, Link, Alert, AlertIcon,  Stack } from '@chakra-ui/react'
-import axios from 'axios'
-import React, { useState } from 'react'
-import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Auth } from './Authcontext'
+import { Box, Center, Image, Spacer, Text, Flex, HStack, FormControl, FormLabel, Input, Button, Link, Alert, AlertIcon, Stack } from '@chakra-ui/react'
 
-const LoginPage = () => {
-    const { isAuth, login } = useContext(Auth)
+import React, { useState } from 'react'
+
+import { useNavigate } from 'react-router-dom'
+
+
+const AdminLogin = () => {
+    
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
-    console.log(email,password)
+    const [success,setsucces]=useState(false)
+    const [err,seterr]=useState(false)
     const navigate = useNavigate()
     const handleclick = () => {
-       const usedata={email,password}
-        axios.post("https://reqres.in/api/login", usedata)
-            .then((res) => login(res.data.token))
-    }
-    if (isAuth) {
+       if(email==="Admin@gmail.com" && password==="Admin"){
+          setsucces(!success)
         setTimeout(() => {
-              navigate("/")
+              navigate("/admin")
         }, 2000)
+       }
+           seterr(true)
+           setTimeout(() => {
+           seterr(false)
+      }, 2000)
+
     }
+    // if (isAuth) {
+    //     setTimeout(() => {
+    //         //   navigate("/")
+    //     }, 2000)
+    // }
 
     return (
         <Box>
@@ -29,12 +38,17 @@ const LoginPage = () => {
                    <Box>
                     <Center>
                     <Box width={'40%'}>
-                   {isAuth ? <Stack spacing={3}>
+                   {success ? <Stack spacing={3}>
                     <Alert status='success'>
                         <AlertIcon />
-                        Login success
+                      Welcome Admin
                     </Alert>
-                </Stack> : ""
+                </Stack> : err?<Stack spacing={3}>
+                    <Alert status='error'>
+                        <AlertIcon />
+                     Email or Password not match
+                    </Alert>
+                </Stack>:""
                 }
                 </Box>
                 </Center>
@@ -80,7 +94,7 @@ const LoginPage = () => {
                                 <Text h={'1px'} w={'33%'} backgroundColor={"1px solid gray"}></Text> <Text>Or Sigin With</Text><Text h={'1px'} w={'33%'} backgroundColor={"1px solid gray"}></Text>
                             </HStack>
 
-                            <HStack mt={'15px'}>
+                            <HStack mt={'30px'}>
                                 <Center> <Image src="https://cdn1.harryanddavid.com/wcsstore/HarryAndDavid/images/Auth0/fb_signin.png" width={'45%'} >
                                 </Image>
                                     <Image ml={2} src="https://cdn1.harryanddavid.com/wcsstore/HarryAndDavid/images/Auth0/btn_google_signin_light_normal_web@2x.png" width={'45%'} h="40px">
@@ -97,4 +111,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default AdminLogin

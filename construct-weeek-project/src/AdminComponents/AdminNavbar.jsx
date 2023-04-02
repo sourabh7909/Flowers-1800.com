@@ -3,12 +3,14 @@ import { Box, SimpleGrid,Image, Center, Flex, Input, Spacer,Text, Button} from '
 import { navbar } from '../Getdata/Axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
+
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { Auth } from '../LoginComponents/Authcontext'
+import OpenDrawer from './Opendrawer'
 
 
-const Navbar = () => {
+const AdminNavbar = () => {
     const {isAuth,logout,totalcartlength}=useContext(Auth)
     const [navtop, setnavtop] = useState([])
     const navigate=useNavigate()
@@ -26,14 +28,15 @@ const Navbar = () => {
 
     
     return (
-        <Box>
+        <Box >
             <hr></hr>
+            <Box ml={2}> <OpenDrawer></OpenDrawer></Box>
             <Center>
             <SimpleGrid w={'88%'} columns={11} gap={15}>
                 {navtop.map((el) =>
                
                 <Box key={el.id}>
-                    <Image src={el.image} w={'70px'} alt={el.id} h={'60px'}></Image>
+                   <Image src={el.image} w={'70px'} alt={el.id} h={'60px'}></Image>
                 </Box>
             )}
             </SimpleGrid>
@@ -73,12 +76,12 @@ const Navbar = () => {
                 <Text ml={'-5px'} fontSize='xs'>({totalcartlength})Cart</Text>
                 </Box>
                 </Link>
-                <Spacer/>
+                {/* <Spacer/>
                 <Link to="/adminlogin"><Box>
                 <Image src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/blt88337dc20d1d8278/5e178293942caf0fc36b77ab/Header-Icon-PWA-profile.svg" w={'65%'} h={'45px'}></Image>
                 <Text  fontSize='xs'>Admin</Text>
                 </Box>
-                </Link>
+                </Link> */}
                 </Flex>
             </Flex>
             </Center>
@@ -92,4 +95,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default AdminNavbar

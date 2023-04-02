@@ -1,42 +1,43 @@
-import { Box, Center, FormControl, FormLabel,Input,Button,Text, HStack } from '@chakra-ui/react'
-import React from 'react'
-import { cartData } from '../Getdata/Axios'
-import { useEffect,useState } from 'react'
+import { Box, Center, FormControl, FormLabel,Input,Button,Text, HStack,Progress } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import { useContext } from 'react'
+import { Auth } from '../LoginComponents/Authcontext'
+import { useNavigate } from 'react-router-dom'
+
 const PaymentHome = () => {
-//     const [navtop, setnavtop] = useState([])
-//     const fetchandupdatedata = async () => {
-//         try {
-//             await cartData()
-//                 .then((res) => setnavtop(res.data))
-//         } catch (error) {
-//             console.log(error)
-//         }
-//     }
-//     useEffect(() => {
-//         fetchandupdatedata()
-//     }, [])
-   
+    const navigate=useNavigate()
+    const {totalAmount}=useContext(Auth)
+    const [progress,setprogrees]=useState(false)
+    console.log(totalAmount)
+    const handleclick=()=>{
+        setprogrees(!progress)
+        console.log("working")
+        setTimeout(() => {
+           navigate("/paymentsuccess")
+        }, 2000);
+    }
   return (
-    
-    <Box border="1px solid red">
+    // backgroundImage={'https://cdn.dribbble.com/users/1487848/screenshots/3835483/transitionselect_payment.gif'}
+    <Box  backgroundImage={'https://cdn.dribbble.com/users/1487848/screenshots/3835483/transitionselect_payment.gif'} w={'100%'} >
+          {progress? <Progress size='xs' isIndeterminate />:""}
        <Center>
-      
-        <Box w={"28%"} p={'2%'} boxShadow={'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;'}>
+       
+        <Box  backgroundColor={'white'}  w={"28%"} p={'2%'} boxShadow={' rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}>
             <Center><Text mb={'40px'} fontSize={'27px'}  fontWeight={'semibold'}>Checkout</Text></Center>
-            <Center> <Box w={'100%'} h={'400px'} >
+            <Center> <Box w={'100%'} h={'500px'} >
                 <FormControl>
                     <FormLabel >Card number</FormLabel>
-                    <Input type={'number'} mb={'20px'} border={'1px solid gray'} borderRadius={"3px"} focusBorderColor='1px solid silver'  w={'100%'}></Input>
+                    <Input backgroundColor={'white'} placeholder='4000 1234 5678 9010' type={'number'} mb={'20px'} border={'1px solid gray'} borderRadius={"3px"} focusBorderColor='1px solid silver'  w={'100%'}></Input>
                     <FormLabel>Expiry date</FormLabel>
-                    <Input type={'number'} mb={'20px'} border={'1px solid gray'} borderRadius={"3px"} focusBorderColor='1px solid silver'></Input>
+                    <Input backgroundColor={'white'} placeholder='02/12'   type={'text'} mb={'20px'} border={'1px solid gray'} borderRadius={"3px"} focusBorderColor='1px solid silver'></Input>
                     <HStack>
                     <Box>
                         <FormLabel>CVV</FormLabel>
-                        <Input placeholder='***' border={'1px solid gray'} borderRadius={"3px"} focusBorderColor='1px solid silver' type={'password'}></Input>
+                        <Input backgroundColor={'white'} placeholder='***' border={'1px solid gray'} borderRadius={"3px"} focusBorderColor='1px solid silver' type={'password'}></Input>
                     </Box>
                     <Box>
                         <FormLabel>ZIP Code</FormLabel>
-                        <Input placeholder='06355' border={'1px solid gray'} borderRadius={"3px"} focusBorderColor='1px solid silver' type={'number'}></Input>
+                        <Input backgroundColor={'white'} placeholder='06355' border={'1px solid gray'} borderRadius={"3px"} focusBorderColor='1px solid silver' type={'number'}></Input>
                     </Box>
                     </HStack>
                 </FormControl>
@@ -44,9 +45,9 @@ const PaymentHome = () => {
             </Box>
             
             </Center>
-            <Button mt={'43px'} _hover={'none'} borderRadius={'3px'} color={'white'} fontWeight={'bold'} height={'50px'} backgroundColor={'#00C876'} w={'100%'}>Pay</Button>
+            <Button onClick={handleclick} mt={'43px'} _hover={'none'} borderRadius={'3px'} color={'white'} fontWeight={'bold'} height={'50px'} backgroundColor={'#00C876'} w={'100%'}>Pay ${totalAmount}</Button>
         </Box>
-    
+      
         </Center>
     </Box>
   )
