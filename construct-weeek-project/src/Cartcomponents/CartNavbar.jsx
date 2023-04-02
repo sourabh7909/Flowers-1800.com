@@ -7,9 +7,10 @@ import Details from '../LoginComponents/LoginLadingPage'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { Auth } from '../LoginComponents/Authcontext'
+import Allproduct from '../ProductComponents/Allproduct'
 
 
-const Navbar = () => {
+const CartNavbar = () => {
     const {isAuth,logout,totalcartlength}=useContext(Auth)
     const [navtop, setnavtop] = useState([])
     const navigate=useNavigate()
@@ -47,11 +48,11 @@ const Navbar = () => {
              <Button cursor={'pointer'} _hover={'none'} backgroundColor='#65388b' color="white"  width={'7.5%'} borderLeftRadius={'none'} mt={3}>SEARCH</Button>
             <Spacer/>
                 <Flex w={'18%'} >
-                <Box>
+                {/* <Box>
                 <Image src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/blt34a8699231b452d4/reminders_icon_black.svg" w={'65%'} pl={3} h={'45px'}></Image>
                 <Text fontSize='xs'>Reminders</Text>
                 </Box>
-                <Spacer/>
+                <Spacer/> */}
               {!isAuth?<Box onClick={()=>navigate('/loginlanding')} cursor="pointer">
                 <Image src="https://images.contentstack.io/v3/assets/bltdd99f24e8a94d536/blt88337dc20d1d8278/5e178293942caf0fc36b77ab/Header-Icon-PWA-profile.svg" w={'65%'} h={'45px'}></Image>
                 <Text fontSize='xs'>Sign In</Text>
@@ -87,4 +88,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default CartNavbar

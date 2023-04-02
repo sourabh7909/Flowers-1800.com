@@ -23,8 +23,8 @@ const Recommended = () => {
             <Center>
                 <Grid w={'80%'} templateColumns={"repeat(5,1fr)"} gap={8}>
                     {navtop.map((el) =>
-                        <Box>
-                            <Box overflow={'hidden'} key={el.id}>
+                        <Box key={el.id}>
+                            <Box overflow={'hidden'} >
                                 <Image overflow={'hidden'} _hover={{ transform: 'scale(1.07)' }} transition={'all 0.3s'} cursor={'pointer'} src={el.image} w={'100%'} alt={el.id} ></Image>
                                 {/* <Center> <Text mt={1} textAlign={'center'} fontWeight={'semibold'} fontSize={'1.1em'} color={'rgb(31, 31, 27)'}>{el.name}</Text></Center> */}
 

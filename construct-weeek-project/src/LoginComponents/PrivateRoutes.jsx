@@ -1,14 +1,16 @@
 import React from 'react'
 import { useContext } from 'react'
 import { Auth } from './Authcontext'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 
 function PrivateRoutes({children}) {
     const {isAuth}=useContext(Auth)
+    console.log(isAuth)
     const navigate=useNavigate()
     if(!isAuth){
-    return navigate("/login")
+    // return navigate("/login")
+    return <Navigate to='/login'/>
     }
     return children
 }

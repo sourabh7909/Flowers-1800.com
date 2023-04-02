@@ -1,7 +1,9 @@
 import React from 'react'
 import {Box, Center, Flex,Text} from "@chakra-ui/react"
 
+
 const Navdiffproductlist = () => {
+  
   return (
     <Box>
     <Center>
